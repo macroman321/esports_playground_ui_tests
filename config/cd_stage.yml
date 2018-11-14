@@ -1,0 +1,11 @@
+###
+#
+# cd_stage.yml
+#
+# Config data for the Staging environment
+#
+###
+
+url:
+  playground: 'https://accounts-stage.gamecredits2.org/oauth'
+  gnation_profile: 'https://profile-stage.gamecredits2.org'

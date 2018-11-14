@@ -1,0 +1,7 @@
+.idea
+.DS_Store
+reports/
+node_modules/
+npm-debug.log
+tmp
+gn_profile.log
