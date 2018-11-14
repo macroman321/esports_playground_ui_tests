@@ -43,7 +43,6 @@ class LoginPage extends Page {
       let secondCheckBox = getCheckboxes.value[1]
       let firstCheckBoxElementID = Object.values(firstCheckBox)[0]
       let secondCheckBoxElementID = Object.values(secondCheckBox)[0]
-
       await this.webdriver.elementIdClick(firstCheckBoxElementID)
       await this.webdriver.elementIdClick(secondCheckBoxElementID)
       await this.webdriver.click(this.continueTermsOfServiceButtonClass)
@@ -51,8 +50,9 @@ class LoginPage extends Page {
   }
 
   async verifySuccessfulLogin () {
-    await this.webdriver.waitForVisible(this.skipWelcomeScreenButtonClass, WAIT_TIME_MEDIUM)
-    await this.webdriver.click(this.skipWelcomeScreenButtonClass)
+    if ((await this.webdriver.waitForVisible(this.skipWelcomeScreenButtonClass, WAIT_TIME_MEDIUM)) === true) {
+      await this.webdriver.click(this.skipWelcomeScreenButtonClass)
+    }
     await this.webdriver.waitForVisible(this.playgroundCurrentLadderClass, WAIT_TIME_MEDIUM)
   }
 }
