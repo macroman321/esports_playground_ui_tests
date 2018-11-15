@@ -19,11 +19,11 @@ class MainPage extends Page {
   get editProfileButtonClass () {return '[class="gc-button gc-button--primary gc-button--medium gc-profile__user__action"]'}
   get firstNameTextFieldName () {return '[name="firstName"]'}
   get lastNameTextFieldName () {return '[name="lastName"]'}
-  get backgroundHeaderClass () {return '[class="gc-profile__header"]'}
+  get backgroundHeaderClass () {return '[class="fade in gc-modal"]'}
 
   // Page methods
   async openMainPage () {
-    await super.open('gnation_profile', '/profile')
+    await super.open('gnation_profile', 'profile')
   }
 
   async verifyProfileElements () {
@@ -40,24 +40,27 @@ class MainPage extends Page {
   }
 
   async editProfileWithRandomInfo () {
+    let randomStringOne = this.generateRandomString()
+    let randomStringTwo = this.generateRandomString()
     await this.webdriver.waitForVisible(this.firstNameTextFieldName, WAIT_TIME_MEDIUM)
-    await this.webdriver.setValue(this.firstNameTextFieldName, this.generateRandomString())
+    await this.webdriver.setValue(this.firstNameTextFieldName, randomStringOne)
     await this.webdriver.waitForVisible(this.lastNameTextFieldName, WAIT_TIME_MEDIUM)
-    await this.webdriver.setValue(this.lastNameTextFieldName, this.generateRandomString())
+    await this.webdriver.setValue(this.lastNameTextFieldName, randomStringTwo)
   }
 
   async clickOutsideOfPopup () {
-    await this.webdriver.click(this.backgroundHeaderClass)
+    await this.webdriver.leftClick(this.backgroundHeaderClass, 34, 34)
+    await this.webdriver.pause(WAIT_TIME_MEDIUM)
   }
 
   async verifyEditProfilePopupIsOpen () {
-    if ((await this.webdriver.waitForVisible(this.firstNameTextFieldName) === false)) {
+    if ((await this.webdriver.isVisible(this.firstNameTextFieldName, WAIT_TIME_SHORT) === false)) {
       throw new Error ('Edit profile has been closed when it should be open!')
     }
   }
 
   // Helper methods
-  async generateRandomString () {
+  generateRandomString () {
     return Math.random().toString(36).slice(-5)
   }
 }

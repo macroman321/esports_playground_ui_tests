@@ -23,7 +23,7 @@ class LoginPage extends Page {
 
   // Page methods
   async openLoginPage () {
-    await super.open('playground', '/login')
+    await super.open('playground', 'login')
   }
 
   async login (username, password) {
@@ -36,7 +36,7 @@ class LoginPage extends Page {
   }
 
   async didToSPageAppear () {
-    if ((await this.webdriver.waitForVisible(this.termsOfServiceDivClass, WAIT_TIME_MEDIUM)) === true) {
+    if ((await this.webdriver.waitForExist(this.termsOfServiceDivClass, WAIT_TIME_LONG)) === true) {
       await this.webdriver.waitForVisible(this.acceptTermsCheckboxClass, WAIT_TIME_MEDIUM)
       let getCheckboxes = await this.webdriver.elements(this.acceptTermsCheckboxClass)
       let firstCheckBox = getCheckboxes.value[0]
@@ -50,7 +50,7 @@ class LoginPage extends Page {
   }
 
   async verifySuccessfulLogin () {
-    if ((await this.webdriver.waitForVisible(this.skipWelcomeScreenButtonClass, WAIT_TIME_MEDIUM)) === true) {
+    if ((await this.webdriver.waitForExist(this.skipWelcomeScreenButtonClass, WAIT_TIME_MEDIUM)) === true) {
       await this.webdriver.click(this.skipWelcomeScreenButtonClass)
     }
     await this.webdriver.waitForVisible(this.playgroundCurrentLadderClass, WAIT_TIME_MEDIUM)
