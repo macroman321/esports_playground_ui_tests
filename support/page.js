@@ -8,7 +8,8 @@ class Page {
   }
 
   async open (project, relativeUrl) {
-    // await this.webdriver.windowHandleMaximize(['current']);
+    // Fullscreen the window
+    await this.webdriver.windowHandleFullscreen()
     await this.webdriver.url(`${TestData.getBaseUrl(project)}/${relativeUrl}`)
   }
 }

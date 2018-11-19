@@ -16,7 +16,7 @@ class MainPage extends Page {
   get profileImageDivClass () {return '[class="gc-profile__user__avatar"]'}
   get profileNameH1Class () {return '[class="gc-profile__user__name"]'}
   get profileUsernameEmClass () {return '[class="gc-profile__user__alias"]'}
-  get editProfileButtonClass () {return '[class="gc-button gc-button--primary gc-button--medium gc-profile__user__action"]'}
+  get editProfileButtonClass () {return '[class="gc-button gc-button--medium gc-profile__user__action"]'}
   get firstNameTextFieldName () {return '[name="firstName"]'}
   get lastNameTextFieldName () {return '[name="lastName"]'}
   get backgroundHeaderClass () {return '[class="fade in gc-modal"]'}
@@ -35,7 +35,7 @@ class MainPage extends Page {
   }
 
   async clickEditProfileButton () {
-    await this.webdriver.waitForVisible(this.editProfileButtonClass, WAIT_TIME_MEDIUM)
+    await this.webdriver.waitForVisible(this.editProfileButtonClass, WAIT_TIME_LONG)
     await this.webdriver.click(this.editProfileButtonClass)
   }
 
@@ -54,8 +54,10 @@ class MainPage extends Page {
   }
 
   async verifyEditProfilePopupIsOpen () {
-    if ((await this.webdriver.isVisible(this.firstNameTextFieldName, WAIT_TIME_SHORT) === false)) {
-      throw new Error ('Edit profile has been closed when it should be open!')
+    try {
+      await this.webdriver.waitForVisible(this.firstNameTextFieldName, WAIT_TIME_MEDIUM)
+    } catch (error) {
+      throw new Error (error + '\nEdit profile popup has been closed when it should be open!')
     }
   }
 

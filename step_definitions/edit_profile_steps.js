@@ -8,7 +8,7 @@
 
 const {Given, When, Then} = require('cucumber')
 
-When('I click on the Edit profile button', async function () {
+When('I click on the Edit profile button', {timeout: 20000}, async function () {
   await this.mainPage.clickEditProfileButton()
 })
 
