@@ -99,6 +99,7 @@ class MainPage extends Page {
   }
 
   async verifyChosenAvatar () {
+    //TODO: Continue here when you come back to the Change avatar scenario
     await this.webdriver.click(this.profileAvatarSaveButtonClass)
     await this.webdriver.pause(WAIT_TIME_SHORT)
   }
