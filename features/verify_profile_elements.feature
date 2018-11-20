@@ -11,5 +11,5 @@ Feature: Verify profile elements
   Scenario: Verify profile elements
     When I log in as user "qa_user_1"
     Then I should see the user has been successfully logged in
-    When I go my profile page
+    When I go to my profile page
     Then I should see all the expected profile elements present

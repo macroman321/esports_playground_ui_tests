@@ -21,7 +21,7 @@ Then('I should see the user has been successfully logged in', {timeout: 20000}, 
   await this.loginPage.verifySuccessfulLogin()
 })
 
-When('I go my profile page', async function () {
+When('I go to my profile page', async function () {
   await this.mainPage.openMainPage()
 })
 

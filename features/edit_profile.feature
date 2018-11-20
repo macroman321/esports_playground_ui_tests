@@ -8,10 +8,25 @@
 
 Feature: Edit profile
 
+  Scenario: Change first name and last name
+    When I log in as user "qa_user_1"
+    Then I should see the user has been successfully logged in
+    When I go to my profile page
+    And I click on the Edit profile button
+    Then I should see the changes I have made displayed on my profile
+
+  Scenario: Change avatar
+    When I log in as user "qa_user_1"
+    Then I should see the user has been successfully logged in
+    When I go to my profile page
+    And I click on the avatar icon
+    And I choose a random avatar
+    Then I should see the avatar I have chosen displayed
+
   Scenario: Verify popup doesn't close if you click outside of it after making some changes
     When I log in as user "qa_user_1"
     Then I should see the user has been successfully logged in
-    When I go my profile page
+    When I go to my profile page
     And I click on the Edit profile button
     And I make some changes to my profile
     And I click outside of the Edit profile popup

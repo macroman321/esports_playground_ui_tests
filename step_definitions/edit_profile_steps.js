@@ -23,3 +23,19 @@ When('I click outside of the Edit profile popup', {timeout: 20000}, async functi
 Then('I should see the Edit profile popup is still open', {timeout: 20000}, async function () {
   await this.mainPage.verifyEditProfilePopupIsOpen()
 })
+
+Then('I should see the changes I have made displayed on my profile', {timeout: 20000}, async function () {
+  await this.mainPage.verifyFirstNameLastName()
+})
+
+When('I click on the avatar icon', {timeout: 20000}, async function () {
+  await this.mainPage.clickAvatarIcon()
+})
+
+When('I choose a random avatar', {timeout: 20000}, async function () {
+  await this.mainPage.chooseRandomAvatar()
+})
+
+Then('I should see the avatar I have chosen displayed', {timeout: 20000}, async function () {
+  await this.mainPage.verifyChosenAvatar()
+})
