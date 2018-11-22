@@ -19,6 +19,7 @@ class MainPage extends Page {
   get profileSaveButtonClass () {return '[class="gc-button gc-button--primary gc-button--fixed gc-edit-profile__footer__action"]'}
   get profileAvatarDivClassMedium () {return '[class="gc-avatar gc-avatar--medium gc-choose-avatar__avatar"]'}
   get profileAvatarSaveButtonClass () {return '[class="gc-button gc-button--primary gc-button--fixed gc-choose-avatar__footer__action"]'}
+  get profileCancelButtonClass () {return '[class="gc-button gc-button--fixed gc-edit-profile__footer__action"]'}
   get editProfileButtonClass () {return '[class="gc-button gc-button--medium gc-profile__user__action"]'}
   get firstNameTextFieldName () {return '[name="firstName"]'}
   get lastNameTextFieldName () {return '[name="lastName"]'}
@@ -102,6 +103,16 @@ class MainPage extends Page {
     //TODO: Continue here when you come back to the Change avatar scenario
     await this.webdriver.click(this.profileAvatarSaveButtonClass)
     await this.webdriver.pause(WAIT_TIME_SHORT)
+  }
+
+  async verifyAlreadyEnteredInfo () {
+    await this.webdriver.waitForVisible(this.profileNameH1Class, WAIT_TIME_MEDIUM)
+    return await this.webdriver.getText(this.profileNameH1Class)
+  }
+
+  async clickCancelButton () {
+    await this.webdriver.click(this.profileCancelButtonClass)
+    await this.webdriver.pause(5000)
   }
 
   // Helper methods
