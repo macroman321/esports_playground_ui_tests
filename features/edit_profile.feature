@@ -25,6 +25,14 @@ Feature: Edit profile
     And I click the cancel button
     Then I should see all my old information being displayed
 
+  Scenario: Verify 50 character limit for first name and last name text fields
+    When I log in as user "qa_user_1"
+    Then I should see the user has been successfully logged in
+    When I go to my profile page
+    And I click on the Edit profile button
+    And I enter more than 50 characters in the first and last name text fields
+    Then I should see my changes have been saved with exactly 50 characters
+
   Scenario: Change avatar
     When I log in as user "qa_user_1"
     Then I should see the user has been successfully logged in

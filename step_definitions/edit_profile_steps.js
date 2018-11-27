@@ -53,3 +53,13 @@ Then('I should see all my old information being displayed', {timeout: 20000}, as
   this.secondtime = await this.mainPage.verifyAlreadyEnteredInfo()
   assert(this.firstime, this.secondtime, 'First name and last name are not the same!')
 })
+
+When('I enter more than 50 characters in the first and last name text fields', {timeout: 20000}, async function () {
+  this.value1 = await this.mainPage.generateRandomString(60)
+  this.value2 = await this.mainPage.generateRandomString(60)
+  await this.mainPage.enterMoreThanFiftyChars(this.value1, this.value2)
+})
+
+Then('I should see my changes have been saved with exactly 50 characters', {timeout: 20000}, async function () {
+  await this.mainPage.verifyFiftyCharactersHaveBeenSaved(this.value1, this.value2)
+})

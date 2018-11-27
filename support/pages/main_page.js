@@ -44,8 +44,8 @@ class MainPage extends Page {
   }
 
   async editProfileWithRandomInfo () {
-    let randomStringOne = this.generateRandomString()
-    let randomStringTwo = this.generateRandomString()
+    let randomStringOne = this.generateRandomString(5)
+    let randomStringTwo = this.generateRandomString(5)
     await this.webdriver.waitForVisible(this.firstNameTextFieldName, WAIT_TIME_MEDIUM)
     await this.webdriver.setValue(this.firstNameTextFieldName, randomStringOne)
     await this.webdriver.waitForVisible(this.lastNameTextFieldName, WAIT_TIME_MEDIUM)
@@ -61,13 +61,13 @@ class MainPage extends Page {
     try {
       await this.webdriver.waitForVisible(this.firstNameTextFieldName, WAIT_TIME_SHORT)
     } catch (error) {
-      throw new Error (error + '\nEdit profile popup has been closed when it should be open!')
+      throw new Error(error + '\nEdit profile popup has been closed when it should be open!')
     }
   }
 
   async verifyFirstNameLastName () {
-    let randomStringOne = this.generateRandomString()
-    let randomStringTwo = this.generateRandomString()
+    let randomStringOne = this.generateRandomString(5)
+    let randomStringTwo = this.generateRandomString(5)
     await this.webdriver.waitForVisible(this.firstNameTextFieldName, WAIT_TIME_MEDIUM)
     await this.webdriver.setValue(this.firstNameTextFieldName, randomStringOne)
     await this.webdriver.waitForVisible(this.lastNameTextFieldName, WAIT_TIME_MEDIUM)
@@ -77,7 +77,7 @@ class MainPage extends Page {
     await this.webdriver.pause(WAIT_TIME_SHORT)
     let stringToCompare = randomStringOne + ' ' + randomStringTwo
     if ((await this.webdriver.getText(this.profileNameH1Class)) !== stringToCompare) {
-      throw new Error ('First and last name values do not match with generated values!')
+      throw new Error('First and last name values do not match with generated values!')
     }
   }
 
@@ -95,7 +95,7 @@ class MainPage extends Page {
       let randomizedAvatar = Object.values(countAvatarValues)[0]
       await this.webdriver.elementIdClick(randomizedAvatar)
     } catch (error) {
-      throw new Error (error + '\nAvatar selector does not exist!')
+      throw new Error(error + '\nAvatar selector does not exist!')
     }
   }
 
@@ -115,9 +115,36 @@ class MainPage extends Page {
     await this.webdriver.pause(5000)
   }
 
+  async enterMoreThanFiftyChars (value1, value2) {
+    await this.webdriver.waitForVisible(this.firstNameTextFieldName, WAIT_TIME_MEDIUM)
+    await this.webdriver.clearElement(this.firstNameTextFieldName)
+    await this.webdriver.setValue(this.firstNameTextFieldName, value1)
+    await this.webdriver.waitForVisible(this.lastNameTextFieldName, WAIT_TIME_MEDIUM)
+    await this.webdriver.clearElement(this.lastNameTextFieldName)
+    await this.webdriver.setValue(this.lastNameTextFieldName, value2)
+    await this.webdriver.click(this.profileSaveButtonClass)
+  }
+
+  async verifyFiftyCharactersHaveBeenSaved (value1, value2) {
+    await this.webdriver.waitForVisible(this.profileNameH1Class, WAIT_TIME_MEDIUM)
+    await this.webdriver.pause(WAIT_TIME_SHORT)
+    let profileNameValue = await this.webdriver.getText(this.profileNameH1Class)
+    let stringToCompare = value1.substring(0, 50) + ' ' + value2.substring(0, 50)
+
+    if (profileNameValue !== stringToCompare) {
+      throw new Error('First and last name values do not match with generated values!')
+    }
+  }
+
   // Helper methods
-  generateRandomString () {
-    return Math.random().toString(36).slice(-5)
+  generateRandomString (len, charSet) {
+    charSet = charSet || 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
+    let randomString = ''
+    for (let i = 0; i < len; i++) {
+      let randomPoz = Math.floor(Math.random() * charSet.length)
+      randomString += charSet.substring(randomPoz, randomPoz + 1)
+    }
+    return randomString
   }
 }
 
