@@ -6,9 +6,10 @@
 # NOTES:
 #
 
-  Feature: Forgot Password
+Feature: Forgot Password
 
-    Scenario: Send reset request
-      When I input the email
-      And I click on the Send button
-      Then I should see that the password reset request has been sent
+  @manual
+  Scenario: Send reset request
+    When I input the email
+    And I click on the Send button
+    Then I should see that the password reset request has been sent

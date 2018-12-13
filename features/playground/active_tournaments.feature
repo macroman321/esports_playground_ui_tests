@@ -8,15 +8,18 @@
 
 Feature: Active Tournaments
 
+  @manual
   Scenario: A user can see which tournaments are currently active
     When I click on the Active Tournaments tab
     Then I should see all Active tournament cards
 
+  @manual
   Scenario: A user can join an active tournament
     When I click on the play and win/join button on the tournament card
     And I click on join again
     Then I should be taken to the tournament page
 
+  @manual
   Scenario: A user can cancel an attempt to join an active tournament
     When I click on the play and win/join button on the tournament card
     And I click on the cancel button

@@ -1,13 +1,14 @@
 #
-# FILE NAME: tearms_of_service.feature
-# DESCRIPTION: tearms of service FEATURE
+# FILE NAME: terms_of_service.feature
+# DESCRIPTION: terms of service FEATURE
 # AUTHOR: Ivan Babic (IB)
 # CREATED: 11-Dec-2018
 # NOTES:
 #
 
-  Feature: Tearms of Service
+Feature: Terms of Service
 
-    Scenario: Verify Terms of Service page
-      When I click on the Terms of Service link
-      Then I should be taken to the Terms of Service page
+  @manual
+  Scenario: Verify Terms of Service page
+    When I click on the Terms of Service link
+    Then I should be taken to the Terms of Service page

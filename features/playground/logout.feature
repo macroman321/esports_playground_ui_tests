@@ -8,6 +8,7 @@
 
 Feature: Logout
 
+  @manual
   Scenario: Logout
     When I click on the Logout button
     Then I should be taken to the login page

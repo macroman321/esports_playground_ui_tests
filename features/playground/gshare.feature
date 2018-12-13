@@ -8,6 +8,7 @@
 
 Feature: GShare
 
+  @manual
   Scenario: A user can download GShare for a specific OS
     When I click on the download button
     Then I should see that the download has started

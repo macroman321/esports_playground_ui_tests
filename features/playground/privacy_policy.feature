@@ -8,6 +8,7 @@
 
 Feature: Privacy Policy
 
+  @manual
   Scenario: Verify Privacy Policy page
     When I click on the Privacy Policy link
     Then I should be taken to the Pirivacy Policy page

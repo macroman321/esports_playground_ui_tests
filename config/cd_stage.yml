@@ -8,4 +8,4 @@
 
 url:
   playground: 'https://accounts-stage.gamecredits2.org/oauth'
-  gnation_profile: 'https://profile-stage.gamecredits2.org'
+  profile: 'https://profile-stage.gamecredits2.org'

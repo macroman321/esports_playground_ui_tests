@@ -4,4 +4,4 @@ reports/
 node_modules/
 npm-debug.log
 tmp
-gn_profile.log
+*.log

@@ -3,12 +3,13 @@ const Logger = require('logplease')
 const TestData = require('../util/test_data')
 const LoginPage = require('./pages/login_page')
 const MainPage = require('./pages/main_page')
+const ProfilePage = require('./pages/profile_page')
 
 let testData
 
 const logger = Logger.create(
-  'gn_profile',
-  {filename: 'gn_profile.log', appendFile: true}
+  'esports_playground',
+  {filename: 'esports_playground.log', appendFile: true}
 )
 
 BeforeAll(async function () {
@@ -22,6 +23,7 @@ Before(async function (scenario) {
   // init page objects
   this.loginPage = new LoginPage(this)
   this.mainPage = new MainPage(this)
+  this.profilePage = new ProfilePage(this)
 
   if (!testData) {
     // init test data
