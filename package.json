@@ -1,7 +1,7 @@
 {
-    "name": "gnation_profile_ui_tests",
+    "name": "esports_playground_ui_tests",
     "version": "0.0.1",
-    "description": "GNation Profile UI tests",
+    "description": "eSports Playground UI tests",
     "scripts": {
         "test": "./node_modules/.bin/cucumber-js",
         "selenium": "./node_modules/.bin/selenium-standalone start"
@@ -14,7 +14,7 @@
         "webdriver",
         "automation"
     ],
-    "author": "GNation QA Team <dragan.nikolic@gamecredits.com>",
+    "author": "GameSoftLab QA Team <dragan.nikolic@gamecredits.com>",
     "license": "ISC",
     "dependencies": {
         "assert": "^1.4.1",

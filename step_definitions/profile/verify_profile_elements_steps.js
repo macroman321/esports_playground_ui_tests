@@ -7,7 +7,7 @@
 //
 
 const {Given, When, Then} = require('cucumber')
-const TestData = require('../util/test_data')
+const TestData = require('../../util/test_data')
 
 When('I log in as user {string}', {timeout: 20000}, async function (userId) {
   const user = TestData.getUser(userId)
@@ -22,9 +22,9 @@ Then('I should see the user has been successfully logged in', {timeout: 20000}, 
 })
 
 When('I go to my profile page', async function () {
-  await this.mainPage.openMainPage()
+  await this.profilePage.openProfilePage()
 })
 
 Then('I should see all the expected profile elements present', {timeout: 20000}, async function () {
-  await this.mainPage.verifyProfileElements()
+  await this.profilePage.verifyProfileElements()
 })

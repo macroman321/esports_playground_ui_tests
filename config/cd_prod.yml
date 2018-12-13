@@ -1,0 +1,11 @@
+###
+#
+# cd_prod.yml
+#
+# Config data for the Production environment
+#
+###
+
+url:
+  playground: 'https://account.gn.org/oauth'
+  profile: 'https://profile.gn.org'

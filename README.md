@@ -1,6 +1,6 @@
-# GNation Profile UI tests #
+# eSports Playground UI tests #
 
-Functional Tests for the GNation Profile project.
+Functional Tests for the eSports Playground project.
 
 ## Prerequisites ##
 
