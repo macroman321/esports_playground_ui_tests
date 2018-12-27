@@ -1,3 +1,4 @@
+#!/bin/bash
 # Convenience script for running GPlay Publisher Account tests.
 #
 # Parameters:
