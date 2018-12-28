@@ -13,7 +13,7 @@ When('I click on the Edit profile button', {timeout: 20000}, async function () {
   await this.profilePage.clickEditProfileButton()
 })
 
-When('I make some changes to my profile', {timeout: 20000}, async function () {
+When('I make some changes to my profile', {timeout: 50000}, async function () {
   await this.profilePage.editProfileWithRandomInfo()
 })
 

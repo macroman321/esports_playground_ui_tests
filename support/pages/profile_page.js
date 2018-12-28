@@ -46,6 +46,7 @@ class ProfilePage extends Page {
   async editProfileWithRandomInfo () {
     let randomStringOne = this.generateRandomString(5)
     let randomStringTwo = this.generateRandomString(5)
+    await this.webdriver.pause(WAIT_TIME_SHORT)
     await this.webdriver.waitForVisible(this.firstNameTextFieldName, WAIT_TIME_MEDIUM)
     await this.webdriver.setValue(this.firstNameTextFieldName, randomStringOne)
     await this.webdriver.waitForVisible(this.lastNameTextFieldName, WAIT_TIME_MEDIUM)
@@ -68,9 +69,9 @@ class ProfilePage extends Page {
   async verifyFirstNameLastName () {
     let randomStringOne = this.generateRandomString(5)
     let randomStringTwo = this.generateRandomString(5)
-    await this.webdriver.waitForVisible(this.firstNameTextFieldName, WAIT_TIME_MEDIUM)
+    await this.webdriver.waitForVisible(this.firstNameTextFieldName, WAIT_TIME_LONG)
     await this.webdriver.setValue(this.firstNameTextFieldName, randomStringOne)
-    await this.webdriver.waitForVisible(this.lastNameTextFieldName, WAIT_TIME_MEDIUM)
+    await this.webdriver.waitForVisible(this.lastNameTextFieldName, WAIT_TIME_LONG)
     await this.webdriver.setValue(this.lastNameTextFieldName, randomStringTwo)
     await this.webdriver.click(this.profileSaveButtonClass)
 
@@ -93,6 +94,7 @@ class ProfilePage extends Page {
       let countAvatars = await this.webdriver.elements(this.profileAvatarDivClassMedium)
       let countAvatarValues = countAvatars.value[randomNumber]
       let randomizedAvatar = Object.values(countAvatarValues)[0]
+      await this.webdriver.pause(WAIT_TIME_SHORT)
       await this.webdriver.elementIdClick(randomizedAvatar)
     } catch (error) {
       throw new Error(error + '\nAvatar selector does not exist!')

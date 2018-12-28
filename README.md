@@ -28,6 +28,6 @@ Run login tests against the Production environment using Chrome:
 
 ## References ##
 
-* [Confluence FTC](https://gamecredits.atlassian.net/wiki/spaces/GP/pages/619315208/GNation+Profile+Functional+Test+Cases+FTC)
+* [Confluence FTC](https://gamecredits.atlassian.net/wiki/spaces/GNOR/pages/589430874/eSports+Playground+GNation+Profile+Functional+Test+Cases+FTC)
 * [Cucumber JS](https://github.com/cucumber/cucumber-js): Cucumber for JavaScript.
 * [WebdriverIO](http://webdriver.io/): WebDriver implementation by Christian Bromann
