@@ -23,7 +23,7 @@ class LoginPage extends Page {
 
   // Page methods
   async openLoginPage () {
-    await super.open('playground', 'login')
+    await super.open('accounts', 'login')
   }
 
   async login (username, password) {
