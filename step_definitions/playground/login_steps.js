@@ -22,7 +22,10 @@ Then('I should see that I am logged in', {timeout: 20000}, async function () {
 })
 
 When('I attempt to login without providing a username', {timeout: 20000}, async function () {
-
+    await this.loginPage.openLoginPage()
+    await this.loginPage.login('', '12345678')
 })
 
-Then('I should see that the login button is inactive')
+Then('I should see that the login button is inactive', {timeout: 20000}, async function () {
+    await this.loginPage.submitButtonInactive()
+})
