@@ -2,7 +2,8 @@ const {BeforeAll, Before, After} = require('cucumber')
 const Logger = require('logplease')
 const TestData = require('../util/test_data')
 const LoginPage = require('./pages/login_page')
-const MainPage = require('./pages/main_page')
+const eSportsPage = require('./pages/esports_page')
+const TournamentsPage = require('./pages/tournaments_page')
 const ProfilePage = require('./pages/profile_page')
 
 let testData
@@ -22,7 +23,8 @@ Before(async function (scenario) {
 
   // init page objects
   this.loginPage = new LoginPage(this)
-  this.mainPage = new MainPage(this)
+  this.eSportsPage = new eSportsPage(this)
+  this.tournamentsPage = new TournamentsPage(this)
   this.profilePage = new ProfilePage(this)
 
   if (!testData) {
